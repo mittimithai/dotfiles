@@ -36,11 +36,13 @@
 (add-hook 'tex-mode-hook 'turn-on-flyspell)
 (add-hook 'tex-mode-hook 'flyspell-mode)
 (add-hook 'tex-mode-hook 'visual-line-mode)
+(add-hook 'tex-mode-hook 'turn-on-auto-fill)
 
 (add-hook 'latex-mode-hook 'turn-on-reftex)
 (add-hook 'latex-mode-hook 'turn-on-flyspell)
 (add-hook 'latex-mode-hook 'flyspell-mode)
 (add-hook 'latex-mode-hook 'visual-line-mode)
+(add-hook 'latex-mode-hook 'turn-on-auto-fill)
 
 (defun revert-all-buffers ()
   "Refreshes all open buffers from their respective files."
@@ -115,3 +117,24 @@ buffer is not visiting a file."
 	(find-file (concat "/sudo:root@localhost:"
 			   (ido-read-file-name "Find file(as root): ")))
           (find-alternate-file (concat "/sudo:root@localhost:" buffer-file-name))))
+
+(add-to-list 'load-path "~/.emacs.d/el-get/el-get")
+
+(unless (require 'el-get nil 'noerror)
+  (with-current-buffer
+      (url-retrieve-synchronously
+       "https://raw.github.com/dimitri/el-get/master/el-get-install.el")
+    (goto-char (point-max))
+    (eval-print-last-sexp)))
+
+(add-to-list 'el-get-recipe-path "~/.emacs.d/el-get-user/recipes")
+(el-get 'sync)
+
+;; load emacs 24's package system. Add MELPA repository.
+(when (>= emacs-major-version 24)
+  (require 'package)
+  (add-to-list
+   'package-archives
+   ;; '("melpa" . "http://stable.melpa.org/packages/") ; many packages won't show if using stable
+   '("melpa" . "http://melpa.milkbox.net/packages/")
+   t))

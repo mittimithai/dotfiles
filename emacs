@@ -1,3 +1,10 @@
+
+;; Added by Package.el.  This must come before configurations of
+;; installed packages.  Don't delete this line.  If you don't want it,
+;; just comment it out by adding a semicolon to the start of the line.
+;; You may delete these explanatory comments.
+(package-initialize)
+
 (autoload 'my-site-start "~/.emacs.d/site-start.d/my-site-start" nil t)
 (my-site-start "~/.emacs.d/site-start.d/")
 
@@ -20,6 +27,10 @@
  '(display-time-24hr-format t)
  '(display-time-mode t)
  '(emacs-lisp-mode-hook (quote (turn-on-eldoc-mode checkdoc-minor-mode)))
+ '(org-agenda-files (quote ("~/data/todo.org")))
+ '(package-selected-packages
+   (quote
+    (clj-refactor cider-decompile cider-eval-sexp-fu cider-hydra cider-spy cider clojure-mode ess)))
  '(save-place t nil (saveplace))
  '(text-mode-hook (quote (text-mode-hook-identify)))
  '(uniquify-buffer-name-style (quote forward) nil (uniquify))
