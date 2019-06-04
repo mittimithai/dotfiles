@@ -24,13 +24,16 @@
  '(cperl-indent-level 4)
  '(cperl-label-offset -4)
  '(cperl-merge-trailing-else nil)
+ '(custom-safe-themes
+   (quote
+    ("8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" default)))
  '(display-time-24hr-format t)
  '(display-time-mode t)
  '(emacs-lisp-mode-hook (quote (turn-on-eldoc-mode checkdoc-minor-mode)))
  '(org-agenda-files (quote ("~/data/todo.org")))
  '(package-selected-packages
    (quote
-    (clj-refactor cider-decompile cider-eval-sexp-fu cider-hydra cider-spy cider clojure-mode ess)))
+    (solarized-theme auctex magit clj-refactor cider-decompile cider-eval-sexp-fu cider-hydra cider-spy cider clojure-mode ess)))
  '(save-place t nil (saveplace))
  '(text-mode-hook (quote (text-mode-hook-identify)))
  '(uniquify-buffer-name-style (quote forward) nil (uniquify))

@@ -44,6 +44,41 @@
 (add-hook 'latex-mode-hook 'visual-line-mode)
 (add-hook 'latex-mode-hook 'turn-on-auto-fill)
 
+(add-hook 'LaTeX-mode-hook 'turn-on-reftex)
+(add-hook 'LaTeX-mode-hook 'turn-on-flyspell)
+(add-hook 'LaTeX-mode-hook 'flyspell-mode)
+(add-hook 'LaTeX-mode-hook 'visual-line-mode)
+(add-hook 'LaTeX-mode-hook 'turn-on-auto-fill)
+
+(setq reftex-plug-into-AUCTeX t)
+
+(setq reftex-ref-macro-prompt nil)
+
+(eval-after-load
+    "latex"
+  '(TeX-add-style-hook
+    "cleveref"
+    (lambda ()
+      (if (boundp 'reftex-ref-style-alist)
+      (add-to-list
+       'reftex-ref-style-alist
+       '("Cleveref" "cleveref"
+         (("\\Cref" ?C) ("\\cref" ?c) ("\\cpageref" ?d) ("\\Cpageref" ?D)))))
+      (add-to-list 'reftex-ref-style-default-list "Cleveref")
+      (setq reftex-label-alist '(AMSTeX)) ; not sure why it doesn't parse amstex
+                                        ; automatically
+      (TeX-add-symbols
+       '("cref" TeX-arg-ref)
+       '("Cref" TeX-arg-ref)
+       '("cpageref" TeX-arg-ref)
+       '("Cpageref" TeX-arg-ref)))))
+
+(setq TeX-auto-save t)
+(setq TeX-parse-self t)
+(setq-default TeX-master nil)
+
+
+
 (defun revert-all-buffers ()
   "Refreshes all open buffers from their respective files."
   (interactive)

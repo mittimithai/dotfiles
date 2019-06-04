@@ -32,3 +32,6 @@ and their terminal equivalents.")
     (fill-paragraph nil region)))
 
 (global-set-key (kbd "C-c p") 'unfill-paragraph)
+
+(global-set-key (kbd "C-x g") 'magit-status)
+
